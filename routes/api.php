@@ -25,6 +25,7 @@ use App\Http\Middleware\WithoutLinks;
 
 Route::post('/register', [PassportAuthController::class, 'register']);
 Route::post('/login', [PassportAuthController::class, 'login']);
+Route::post('password-reset', [ForgotPasswordController::class, 'sendResetLinkResponse']);
 
 Route::middleware(['auth.api'])->group(function () {
     // Route::apiResource('users', UserController::class)->except('store')->middleware('withoutlink');
