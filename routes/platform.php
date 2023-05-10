@@ -106,7 +106,7 @@ Route::screen('news', NewsListScreen::class)
             ->push(__('News'),route('platform.news'));
     });
 
-// Home > news > edit 
+// Home > news > edit
 Route::screen('news-edit/{news?}', NewsEditScreen::class)
     ->name('platform.news.edit')
     ->breadcrumbs(function(Trail $trail){

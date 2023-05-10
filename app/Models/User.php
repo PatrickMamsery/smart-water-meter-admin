@@ -75,4 +75,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(CustomRole::class, 'role_id', 'id');
     }
+
+    public function customerDetail()
+    {
+        return $this->hasOne(CustomerDetail::class, 'id', 'customer_id');
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(CustomerContact::class, 'id', 'customer_id');
+    }
 }
