@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\PassportAuthController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\MeterController;
 
 use App\Http\Middleware\WithoutLinks;
 
@@ -30,6 +31,7 @@ Route::post('password-reset', [ForgotPasswordController::class, 'sendResetLinkRe
 Route::middleware(['auth.api'])->group(function () {
     // Route::apiResource('users', UserController::class)->except('store')->middleware('withoutlink');
     // Route::post('users', [UserController::class, 'store']);
+    Route::apiResource('meters', MeterController::class)->middleware('withoutlink');
 
     Route::post('/logout', [PassportAuthController::class, 'logout']);
 
