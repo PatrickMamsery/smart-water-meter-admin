@@ -24,18 +24,18 @@ use App\Http\Middleware\WithoutLinks;
 //     return $request->user();
 // });
 
-Route::post('/register', [PassportAuthController::class, 'register']);
-Route::post('/login', [PassportAuthController::class, 'login']);
-Route::post('password-reset', [ForgotPasswordController::class, 'sendResetLinkResponse']);
+// Route::post('/register', [PassportAuthController::class, 'register']);
+// Route::post('/login', [PassportAuthController::class, 'login']);
+// // Route::post('password-reset', [ForgotPasswordController::class, 'sendResetLinkResponse']);
 
-Route::middleware(['auth.api'])->group(function () {
-    // Route::apiResource('users', UserController::class)->except('store')->middleware('withoutlink');
-    // Route::post('users', [UserController::class, 'store']);
-    Route::apiResource('meters', MeterController::class)->middleware('withoutlink');
+// Route::middleware(['auth.api'])->group(function () {
+//     // Route::apiResource('users', UserController::class)->except('store')->middleware('withoutlink');
+//     // Route::post('users', [UserController::class, 'store']);
+//     Route::apiResource('meters', MeterController::class)->middleware('withoutlink');
 
-    Route::post('/logout', [PassportAuthController::class, 'logout']);
+//     Route::post('/logout', [PassportAuthController::class, 'logout']);
 
-    Route::get('/test', function() {
-        return response()->json(['message' => 'This is a test route']);
-    });
-});
+//     Route::get('/test', function() {
+//         return response()->json(['message' => 'This is a test route']);
+//     });
+// });
