@@ -11,9 +11,10 @@ class MeterReading extends Model
     use HasFactory, AsSource;
 
     protected $fillable = [
-        'customer_id',
+        // 'customer_id',
         'meter_id',
-        'meter_reading',
+        'flow_rate',
+        'total_volume',
         'meter_reading_date',
         'meter_reading_status',
         'meter_reading_image',
@@ -24,10 +25,10 @@ class MeterReading extends Model
         'meter_reading_date',
     ];
 
-    public function customer()
-    {
-        return $this->belongsTo(User::class, 'customer_id', 'id');
-    }
+    // public function customer()
+    // {
+    //     return $this->belongsTo(User::class, 'customer_id', 'id');
+    // }
 
     public function meter()
     {
