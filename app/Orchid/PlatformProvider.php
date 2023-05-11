@@ -31,8 +31,13 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.index'),
 
             Menu::make(__('Meters'))
-                ->icon('wrench')
+                ->icon('speedometer')
+                ->route('platform.meters')
                 ->title(__('Content')),
+
+            Menu::make(__('Payments'))
+                ->icon('wallet')
+                ->route('platform.payments'),
 
             // Menu::make('News')
             //     ->icon('docs')
