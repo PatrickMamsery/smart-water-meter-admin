@@ -33,11 +33,21 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make(__('Meters'))
                 ->icon('speedometer')
                 ->route('platform.meters')
-                ->title(__('Content')),
+                ->title(__('Overview')),
 
             Menu::make(__('Payments'))
                 ->icon('wallet')
                 ->route('platform.payments'),
+
+            Menu::make(__('Users'))
+                ->icon('user')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('Management')),
+
+            Menu::make(__('Customers'))
+                ->icon('people')
+                ->route('platform.customers'),
 
             // Menu::make('News')
             //     ->icon('docs')
@@ -47,16 +57,16 @@ class PlatformProvider extends OrchidServiceProvider
             //     ->icon('question')
             //     ->route('platform.faqs'),
 
-            Menu::make(__('Users'))
-                ->icon('user')
-                ->route('platform.systems.users')
-                ->permission('platform.systems.users')
-                ->title(__('Access rights')),
+            // Menu::make(__('Users'))
+            //     ->icon('user')
+            //     ->route('platform.systems.users')
+            //     ->permission('platform.systems.users')
+            //     ->title(__('Access rights')),
 
-            Menu::make(__('Roles'))
-                ->icon('lock')
-                ->route('platform.systems.roles')
-                ->permission('platform.systems.roles'),
+            // Menu::make(__('Roles'))
+            //     ->icon('lock')
+            //     ->route('platform.systems.roles')
+            //     ->permission('platform.systems.roles'),
         ];
     }
 

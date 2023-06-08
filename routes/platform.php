@@ -2,18 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Examples\ExampleCardsScreen;
-use App\Orchid\Screens\Examples\ExampleChartsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsScreen;
-use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
-use App\Orchid\Screens\Examples\ExampleScreen;
-use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\FAQs\FAQsEditScreen;
 use App\Orchid\Screens\FAQs\FAQsListScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
 use App\Orchid\Screens\News\NewsListScreen;
 
+use App\Orchid\Screens\Customers\CustomersListScreen;
+use App\Orchid\Screens\Customers\CustomerEditScreen;
+use App\Orchid\Screens\Customers\CustomerMetersListScreen;
 use App\Orchid\Screens\Meter\MeterListScreen;
 use App\Orchid\Screens\Meter\MeterEditScreen;
 use App\Orchid\Screens\Payment\PaymentListScreen;
@@ -170,3 +166,33 @@ Route::screen('payments', PaymentListScreen::class)
     });
 
 
+
+// CUSTOMERS
+// Home > Customers
+Route::screen('customers', CustomersListScreen::class)
+    ->name('platform.customers')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Customers'), route('platform.customers'));
+    });
+
+
+// Home > Customers > Edit
+Route::screen('customer/{customer?}', CustomerEditScreen::class)
+    ->name('platform.customer.edit')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.customers')
+            ->push(__('Edit'), route('platform.customer.edit'));
+    });
+
+
+// Home > Customers > Meters
+Route::screen('customer-meters/{customer?}', CustomerMetersListScreen::class)
+    ->name('platform.customer.meters')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.customers')
+            ->push(__('Meters'), route('platform.customer.meters'));
+    });

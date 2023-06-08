@@ -85,4 +85,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(CustomerContact::class, 'id', 'customer_id');
     }
+
+    public function meters()
+    {
+        return $this->hasMany(Meter::class, 'customer_id', 'id');
+    }
 }
