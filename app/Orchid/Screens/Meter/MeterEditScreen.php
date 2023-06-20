@@ -84,7 +84,7 @@ class MeterEditScreen extends Screen
                 Group::make([
                     Input::make('meter.meter_number')
                         ->title('Meter Number')
-                        ->number()
+                        ->type('number')
                         ->required()
                         ->placeholder('Meter Number')
                         ->help('Enter the meter number'),
