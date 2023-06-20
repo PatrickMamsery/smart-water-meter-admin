@@ -90,6 +90,7 @@ class CustomerEditScreen extends Screen
 
                     Input::make('customer.email')
                         ->title('Email')
+                        ->type('email')
                         ->placeholder('Email')
                         ->help('Customer email')
                         ->required(),
