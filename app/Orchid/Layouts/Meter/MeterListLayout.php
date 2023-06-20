@@ -35,7 +35,7 @@ class MeterListLayout extends Table
                 // ->filter(TD::FILTER_TEXT)
                 ->render(function (Meter $meter) {
                     return Link::make($meter->meter_number)
-                        ->route('platform.meter.edit', $meter);
+                        ->route('platform.meter.trends', $meter);
                 }),
 
             TD::make('customer', 'Customer')

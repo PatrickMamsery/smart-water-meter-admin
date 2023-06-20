@@ -31,7 +31,8 @@ class CustomerMetersListLayout extends Table
             TD::make('meter_number', 'Meter Number')
                 ->sort()
                 ->render(function ($meter) {
-                    return $meter->meter_number;
+                    return Link::make($meter->meter_number)
+                        ->route('platform.meter.trends', $meter);
                 }),
 
             TD::make('meter_type', 'Meter Type')

@@ -9,9 +9,12 @@ use App\Orchid\Layouts\OverviewMetrics;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
+use Carbon\Carbon;
 
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\CustomRole;
+use App\Orchid\Layouts\Charts\PaymentsChart;
 
 class PlatformScreen extends Screen
 {
@@ -36,8 +39,38 @@ class PlatformScreen extends Screen
      */
     public function query(): array
     {
+        $startDate = Carbon::now()->startOfYear();
+        $endDate = Carbon::now();
+        $dates = [];
+
+        while ($startDate <= $endDate) {
+            $formattedDate = $startDate->format('M-Y');
+            $dates[] = $formattedDate;
+
+            // sum payments daily and then get them in an array
+            $paymentAmount = Payment::whereYear('created_at', $startDate->year)
+                ->whereMonth('created_at', $startDate->month)
+                ->sum('amount');
+            $paymentAmounts[] = $paymentAmount;
+
+            // $incomeAmount = Income::whereYear('created_at', $startDate->year)
+            //     ->whereMonth('created_at', $startDate->month)
+            //     ->sum('amount');
+            // $incomeAmounts[] = $incomeAmount;
+
+            $startDate->addMonth();
+        }
+
+        $payments_data = [
+            [
+                'labels' => $dates,
+                'name' => 'Payment',
+                'values' => $paymentAmounts
+            ]
+        ];
+
         $clients = User::where('role_id', CustomRole::where('name', 'client')->first()->id)->count();
-        $revenue = 100000;
+        $revenue = Payment::all()->sum('amount');
         $meters = 10;
         $metrics = 3;
 
@@ -48,6 +81,8 @@ class PlatformScreen extends Screen
                 ['keyValue' => number_format($meters, 0), 'keyDiff' => 0],
                 ['keyValue' => number_format($metrics, 0), 'keyDiff' => 0],
             ],
+
+            'payments_data' => $payments_data,
         ];
     }
 
@@ -77,7 +112,11 @@ class PlatformScreen extends Screen
             // ChartsLayout::class
             OverviewMetrics::class,
 
-            Layout::view('home')
+            Layout::columns([
+                PaymentsChart::class,
+            ]),
+
+            // Layout::view('home')
         ];
     }
 }

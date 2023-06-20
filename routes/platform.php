@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Customers\CustomerDetailsScreen;
 use App\Orchid\Screens\FAQs\FAQsEditScreen;
 use App\Orchid\Screens\FAQs\FAQsListScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
@@ -12,7 +13,9 @@ use App\Orchid\Screens\Customers\CustomerEditScreen;
 use App\Orchid\Screens\Customers\CustomerMetersListScreen;
 use App\Orchid\Screens\Meter\MeterListScreen;
 use App\Orchid\Screens\Meter\MeterEditScreen;
+use App\Orchid\Screens\Meter\MeterTrends;
 use App\Orchid\Screens\Payment\PaymentListScreen;
+use App\Orchid\Screens\Logs\LogsListScreen;
 
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -146,6 +149,15 @@ Route::screen('meters', MeterListScreen::class)
             ->push(__('Meters'),route('platform.meters'));
     });
 
+// Home > Meter > Trends
+Route::screen('meter-trends/{meter?}', MeterTrends::class)
+    ->name('platform.meter.trends')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.meters')
+            ->push(__('Trends'), route('platform.meter.trends'));
+    });
+
 // Home > Meters > Edit
 Route::screen('meter/{meter?}', MeterEditScreen::class)
     ->name('platform.meter.edit')
@@ -188,6 +200,15 @@ Route::screen('customer/{customer?}', CustomerEditScreen::class)
     });
 
 
+// Home > Customers > Details
+Route::screen('customer-details/{customer?}', CustomerDetailsScreen::class)
+    ->name('platform.customer.details')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.customers')
+            ->push(__('Details'), route('platform.customer.details'));
+    });
+
 // Home > Customers > Meters
 Route::screen('customer-meters/{customer?}', CustomerMetersListScreen::class)
     ->name('platform.customer.meters')
@@ -195,4 +216,16 @@ Route::screen('customer-meters/{customer?}', CustomerMetersListScreen::class)
         return $trail
             ->parent('platform.customers')
             ->push(__('Meters'), route('platform.customer.meters'));
+    });
+
+
+// Logs
+
+// Home > Logs
+Route::screen('logs', LogsListScreen::class)
+    ->name('platform.logs')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Logs'), route('platform.logs'));
     });

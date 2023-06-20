@@ -34,7 +34,7 @@ class CustomersListLayout extends Table
                 ->sort()
                 ->render(function ($customer) {
                     return Link::make($customer->name)
-                        ->route('platform.customer.meters', $customer->id);
+                        ->route('platform.customer.details', $customer->id);
                 }),
 
             TD::make('email', 'Email')
