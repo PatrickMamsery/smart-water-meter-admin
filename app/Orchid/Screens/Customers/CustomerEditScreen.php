@@ -99,6 +99,10 @@ class CustomerEditScreen extends Screen
                 Group::make([
                     Input::make('customer.phone')
                         ->title('Phone')
+                        ->mask([
+                            'mask' => '(255) 999 999 999',
+                            'numericInput' => true
+                        ])
                         ->placeholder('Phone')
                         ->help('Customer phone')
                         ->required(),
@@ -121,6 +125,8 @@ class CustomerEditScreen extends Screen
      */
     public function createOrUpdate(User $customer, Request $request)
     {
+        // remove spaces in phone number
+        $customer->phone = str_replace(' ', '', $request->phone);
         $customer->role_id = CustomRole::where('name', 'customer')->orWhere('name', 'client')->first()->id;
         $customer->password = bcrypt($request->get('customer')['name']);
         $customer->fill($request->get('customer'))->save();
