@@ -26,7 +26,7 @@ class MeterListScreen extends Screen
     public function query(): array
     {
         return [
-            'meters' => Meter::paginate(),
+            'meters' => Meter::latest('updated_at')->paginate(),
         ];
     }
 

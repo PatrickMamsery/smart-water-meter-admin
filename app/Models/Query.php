@@ -11,12 +11,19 @@ class Query extends Model
     use HasFactory, AsSource;
 
     protected $fillable = [
+        'customer_id',
         'query_date',
         'query_action',
+        'description',
         'query_status',
     ];
 
     protected $dates = [
         'query_date',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id', 'id');
+    }
 }
