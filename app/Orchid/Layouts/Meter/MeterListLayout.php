@@ -32,7 +32,7 @@ class MeterListLayout extends Table
             TD::make('number', 'Meter Number')
                 ->sort()
                 ->cantHide()
-                // ->filter(TD::FILTER_TEXT)
+                ->filter(TD::FILTER_TEXT)
                 ->render(function (Meter $meter) {
                     return Link::make($meter->meter_number)
                         ->route('platform.meter.trends', $meter);
@@ -41,7 +41,7 @@ class MeterListLayout extends Table
             TD::make('customer', 'Customer')
                 ->sort()
                 ->cantHide()
-                // ->filter(TD::FILTER_TEXT)
+                ->filter(TD::FILTER_TEXT)
                 ->render(function (Meter $meter) {
                     return $meter->customer->name;
                 }),
@@ -49,12 +49,14 @@ class MeterListLayout extends Table
             TD::make('status', 'Status')
                 ->sort()
                 ->cantHide()
+                ->filter(TD::FILTER_TEXT)
                 ->render(function (Meter $meter) {
                     return $meter->meter_status;
                 }),
 
             TD::make('updated_at', 'Last edit')
                 ->sort()
+                ->filter(TD::FILTER_DATE)
                 ->render(function (Meter $meter) {
                     return $meter->updated_at->diffForHumans();
                 }),
