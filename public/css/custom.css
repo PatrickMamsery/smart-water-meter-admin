@@ -1,0 +1,18 @@
+.bg-dark
+{
+    background: #1FA2C3 !important;
+    /* background: -webkit-linear-gradient(to bottom, color(#fff), color(#1FA2C3));
+    background: linear-gradient(to bottom, color(#fff), color(#1FA2C3)) !important; */
+}
+
+.bg-dark .nav li.active a {
+    background: #2bb7da !important;
+}
+
+.bg-dark .nav li.active a:hover {
+    background: #2bb7da !important;
+}
+
+.bg-dark .text-muted {
+    color: gold !important;
+}
