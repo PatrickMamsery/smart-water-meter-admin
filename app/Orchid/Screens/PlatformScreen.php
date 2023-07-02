@@ -69,6 +69,8 @@ class PlatformScreen extends Screen
             ]
         ];
 
+        // dd($payments_data);
+
         $clients = User::where('role_id', CustomRole::where('name', 'client')->first()->id)->count();
         $revenue = Payment::all()->sum('amount');
         $meters = 10;
@@ -94,10 +96,10 @@ class PlatformScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Link::make('Go to Site')
-                ->href('https://api.smartwatermeter.patrickmamsery.works')
-                ->icon('globe-alt')
-                ->target('_blank'),
+            // Link::make('Go to Site')
+            //     ->href('https://api.smartwatermeter.patrickmamsery.works')
+            //     ->icon('globe-alt')
+            //     ->target('_blank'),
         ];
     }
 
