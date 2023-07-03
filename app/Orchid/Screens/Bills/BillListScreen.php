@@ -75,6 +75,6 @@ class BillListScreen extends Screen
         Toast::info('Bill marked as unpaid');
 
         // add logs
-        addLog("edit", auth()->user()->name . " marked `$billRefNo`bill as unpaid", "dashboard");
+        addLog("edit", auth()->user()->name . " marked bill with refNo. #$billRefNo as unpaid", "dashboard");
     }
 }
