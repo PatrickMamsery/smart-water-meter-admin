@@ -33,8 +33,16 @@ class LogsListLayout extends Table
             TD::make('action', 'Action')
                 ->sort()
                 ->render(function (CustomLog $log) {
-                    return "<div class='text-". $log->action == 'edit' ? 'info' : ($log->action == 'delete' ? 'danger' : ($log->action == 'access' ? 'success' : 'dark'))."'>". ucfirst($log->action) ."</div>";
-                    // return "<div class='text-". info .">". $log->action ."</div>";
+                    // add color to action
+                    if ($log->action == 'edit') {
+                        return "<span class='text-info'>Edit</span>";
+                    } elseif ($log->action == 'delete') {
+                        return "<span class='text-danger'>Delete</span>";
+                    } elseif ($log->action == 'access') {
+                        return "<span class='text-success'>Access</span>";
+                    } else {
+                        return "<span class='text-dark'>Unknown</span>";
+                    }
                 }),
 
             TD::make('platform', 'Platform')

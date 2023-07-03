@@ -22,4 +22,16 @@ class Bill extends Model
     {
         return $this->belongsTo(User::class, 'customer_id', 'id');
     }
+
+    // set status overdue if today's date is a week after the created date
+    public function getStatusAttribute($value)
+    {
+        if ($value == 'unpaid') {
+            if (now()->diffInDays($this->created_at) > 7) {
+                return 'overdue';
+            }
+        }
+
+        return $value;
+    }
 }

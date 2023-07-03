@@ -15,7 +15,10 @@ use App\Orchid\Screens\Meter\MeterListScreen;
 use App\Orchid\Screens\Meter\MeterEditScreen;
 use App\Orchid\Screens\Meter\MeterTrends;
 use App\Orchid\Screens\Payment\PaymentListScreen;
+use App\Orchid\Screens\Bills\BillListScreen;
 use App\Orchid\Screens\Logs\LogsListScreen;
+
+use App\Orchid\Screens\Queries\QueryListScreen;
 
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -178,6 +181,16 @@ Route::screen('payments', PaymentListScreen::class)
     });
 
 
+// Home > Bills
+Route::screen('bills', BillListScreen::class)
+    ->name('platform.bills')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Bills'), route('platform.bills'));
+    });
+
+
 
 // CUSTOMERS
 // Home > Customers
@@ -228,4 +241,16 @@ Route::screen('logs', LogsListScreen::class)
         return $trail
             ->parent('platform.index')
             ->push(__('Logs'), route('platform.logs'));
+    });
+
+
+// Queries
+
+// Home > Queries
+Route::screen('queries', QueryListScreen::class)
+    ->name('platform.queries')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Queries'), route('platform.queries'));
     });

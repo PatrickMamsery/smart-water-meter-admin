@@ -29,7 +29,7 @@ class PaymentListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('reference_number', 'Reference Number')
+            TD::make('reference_number', 'Reference #')
                 ->sort()
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT)

@@ -126,6 +126,9 @@ class MeterEditScreen extends Screen
     {
         $meter->fill($request->get('meter'))->save();
 
+        // add logs
+        addLog('edit', "$meter->meter_number created by " . auth()->user()->name, "dashboard");
+
         Alert::info('You have successfully created meter details.');
 
         return redirect()->route('platform.meters');

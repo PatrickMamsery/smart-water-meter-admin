@@ -39,6 +39,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('wallet')
                 ->route('platform.payments'),
 
+            Menu::make(__('Bills'))
+                ->icon('layers')
+                ->route('platform.bills'),
+
+            Menu::make(__('Queries'))
+                ->icon('question')
+                ->route('platform.queries'),
+
             Menu::make(__('Customers'))
                 ->icon('people')
                 ->route('platform.customers')

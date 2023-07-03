@@ -73,13 +73,13 @@ class MeterListLayout extends Table
                                 ->route('platform.meter.edit', $meter->id)
                                 ->icon('pencil'),
 
-                            Button::make(__('Delete'))
-                                ->method('remove')
-                                ->confirm(__('Are you sure you want to delete the meter?'))
-                                ->parameters([
-                                    'id' => $meter->id,
-                                ])
-                                ->icon('trash'),
+                            // Button::make(__('Delete'))
+                            //     ->method('remove')
+                            //     ->confirm(__('Are you sure you want to delete the meter?'))
+                            //     ->parameters([
+                            //         'id' => $meter->id,
+                            //     ])
+                            //     ->icon('trash'),
                         ]);
                 }),
         ];
