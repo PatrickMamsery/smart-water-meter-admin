@@ -112,7 +112,9 @@ return [
         'stylesheets' => [
             '/css/custom.css'
         ],
-        'scripts'     => [],
+        'scripts'     => [
+            '/js/custom.js'
+        ],
     ],
 
     /*

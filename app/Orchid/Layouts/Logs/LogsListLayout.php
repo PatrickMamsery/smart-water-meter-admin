@@ -61,7 +61,13 @@ class LogsListLayout extends Table
                 ->sort()
                 ->render(function (CustomLog $log) {
                     return $log->description;
-                })
+                }),
+
+            TD::make('created_at', 'Created')
+                ->sort()
+                ->render(function (CustomLog $log) {
+                    return $log->created_at->toFormattedDateString();
+                }),
         ];
     }
 }
