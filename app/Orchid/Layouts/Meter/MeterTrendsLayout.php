@@ -26,11 +26,11 @@ class MeterTrendsLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('flow_rate', 'Flow Rate (Lts/sec)')
-                ->sort(TD::FILTER_TEXT)
-                ->render(function (MeterReading $meterReading) {
-                    return $meterReading->flow_rate;
-                }),
+            // TD::make('flow_rate', 'Flow Rate (Lts/sec)')
+            //     ->sort(TD::FILTER_TEXT)
+            //     ->render(function (MeterReading $meterReading) {
+            //         return $meterReading->flow_rate;
+            //     }),
 
             TD::make('units', 'Units')
                 ->sort(TD::FILTER_NUMERIC)
